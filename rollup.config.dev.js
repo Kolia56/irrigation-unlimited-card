@@ -28,4 +28,10 @@ export default {
       },
     }),
   ],
+  watch: {
+    chokidar: {
+      paths: "src/**",
+      usePolling: true,
+    },
+  },
 };
