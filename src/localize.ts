@@ -8,6 +8,7 @@ import * as ro from "./translations/ro.json";
 import * as it from "./translations/it.json";
 import * as es from "./translations/es.json";
 import * as pl from "./translations/pl.json";
+import * as pt from "./translations/pt.json";
 
 const languages = {
   af: af,
@@ -18,6 +19,7 @@ const languages = {
   it: it,
   nb: nb,
   pl: pl,
+  pt: pt,
   ro: ro,
   sk: sk,
 };
