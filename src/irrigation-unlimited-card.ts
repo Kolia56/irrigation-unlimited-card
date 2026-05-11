@@ -699,9 +699,7 @@ export class IrrigationUnlimitedCard extends LitElement {
                 icon="mdi:timer-outline"
                 title=${loc.t("menu.suspend.buttonHint")}
                 @click="${this._serviceSuspend}"
-              >
-                <ha-icon icon="mdi:timer-outline"></ha-icon>
-              </ha-icon-button>
+              ></ha-icon-button>
             </div>
           </div>
           <div
@@ -726,9 +724,7 @@ export class IrrigationUnlimitedCard extends LitElement {
                 icon="mdi:play"
                 title=${loc.t("menu.manual.buttonHint")}
                 @click="${this._serviceManualRun}"
-              >
-                <ha-icon icon="mdi:run"></ha-icon>
-              </ha-icon-button>
+              ></ha-icon-button>
             </div>
           </div>
           <div
@@ -741,11 +737,10 @@ export class IrrigationUnlimitedCard extends LitElement {
             <div class="iu-mc3">
               <ha-icon-button
                 .disabled=${(~pauseResume & 1) > 0}
+                icon="mdi:pause"
                 title=${loc.t("menu.pause.buttonHint")}
                 @click="${this._servicePause}"
-              >
-                <ha-icon icon="mdi:pause"></ha-icon>
-              </ha-icon-button>
+              ></ha-icon-button>
             </div>
           </div>
           <div
@@ -758,11 +753,10 @@ export class IrrigationUnlimitedCard extends LitElement {
             <div class="iu-mc3">
               <ha-icon-button
                 .disabled=${(~pauseResume & 2) > 0}
+                icon="mdi:play"
                 title=${loc.t("menu.resume.buttonHint")}
                 @click="${this._serviceResume}"
-              >
-                <ha-icon icon="mdi:play"></ha-icon>
-              </ha-icon-button>
+              ></ha-icon-button>
             </div>
           </div>
           <div
@@ -773,11 +767,10 @@ export class IrrigationUnlimitedCard extends LitElement {
             <div class="iu-mc3">
               <ha-icon-button
                 .disabled=${!allowCancel}
+                icon="mdi:cancel"
                 title=${loc.t("menu.cancel.buttonHint")}
                 @click="${this._serviceCancel}"
-              >
-                <ha-icon icon="mdi:cancel"></ha-icon>
-              </ha-icon-button>
+              ></ha-icon-button>
             </div>
           </div>
           <div
