@@ -138,7 +138,7 @@ export class IrrigationUnlimitedCardEditor extends LitElement {
       this,
       "config-changed",
       { config: this._config },
-      { bubbles: true, composed: true }
+      { bubbles: true, composed: true },
     );
   }
 

@@ -33,7 +33,7 @@ const loc = new localise(window.navigator.language);
 console.info(
   `%c  IRRIGATION-UNLIMITED-CARD \n%c  ${loc.t("common.version")} ${CARD_VERSION}    `,
   "color: orange; font-weight: bold; background: black",
-  "color: white; font-weight: bold; background: dimgray"
+  "color: white; font-weight: bold; background: dimgray",
 );
 
 (window as any).customCards = (window as any).customCards || [];
@@ -70,7 +70,7 @@ export class IrrigationUnlimitedCard extends LitElement {
   }
 
   protected firstUpdated(
-    _changedProperties: PropertyValues<any> | Map<PropertyKey, unknown>
+    _changedProperties: PropertyValues<any> | Map<PropertyKey, unknown>,
   ): void {
     this.iu_coordinator.init(this.hass);
   }
@@ -110,7 +110,7 @@ export class IrrigationUnlimitedCard extends LitElement {
         </div>
         <div class="iu-controllers">
           ${this.iu_coordinator.controllers.map((controller) =>
-            this._renderController(controller)
+            this._renderController(controller),
           )}
         </div>
         <div class="iu-footer"></div>
@@ -200,7 +200,7 @@ export class IrrigationUnlimitedCard extends LitElement {
               true,
               controller.pause_resume_status(),
               null,
-              suspended
+              suspended,
             )}
           </div>
         </div>
@@ -233,7 +233,7 @@ export class IrrigationUnlimitedCard extends LitElement {
         <div class=${sequencesClasses.join(" ")}>
           <hr />
           ${controller.sequences.map((sequence) =>
-            this._renderSequence(controller, sequence)
+            this._renderSequence(controller, sequence),
           )}
         </div>
       </div>
@@ -356,7 +356,7 @@ export class IrrigationUnlimitedCard extends LitElement {
                 true,
                 0,
                 adjustment,
-                suspended
+                suspended,
               )}
             </div>
           </div>
@@ -371,7 +371,7 @@ export class IrrigationUnlimitedCard extends LitElement {
   private _renderTimeline(timeline: IUTimeline): TemplateResult {
     const start = new Date(timeline.start);
     const duration = new Date(
-      new Date(timeline.end).getTime() - start.getTime()
+      new Date(timeline.end).getTime() - start.getTime(),
     )
       .toISOString()
       .slice(12, 19);
@@ -436,7 +436,7 @@ export class IrrigationUnlimitedCard extends LitElement {
 
   private _renderSequence(
     controller: IUController,
-    sequence: IUSequence
+    sequence: IUSequence,
   ): TemplateResult {
     const stateObj = this.hass.states[sequence.entity_id];
     const status = stateObj.attributes.status;
@@ -536,13 +536,13 @@ export class IrrigationUnlimitedCard extends LitElement {
                     ? 2
                     : 0,
                 adjustment,
-                suspended
+                suspended,
               )}
             </div>
           </div>
           <div class="iu-sequence-zones iu-content">
             ${sequence.zones.map((zone) =>
-              this._renderSequenceZone(controller, sequence, zone, isManual)
+              this._renderSequenceZone(controller, sequence, zone, isManual),
             )}
           </div>
         </div>
@@ -554,7 +554,7 @@ export class IrrigationUnlimitedCard extends LitElement {
     controller: IUController,
     sequence: IUSequence,
     sequenceZone: IUSequenceZone,
-    isManual: boolean
+    isManual: boolean,
   ): TemplateResult {
     const status = sequenceZone.status;
     const isOn = status === "on";
@@ -598,8 +598,8 @@ export class IrrigationUnlimitedCard extends LitElement {
                   this._renderSequenceZoneRef(
                     controller,
                     zoneRef,
-                    index === array.length - 1
-                  )
+                    index === array.length - 1,
+                  ),
               )}</span
             >
           </div>
@@ -626,7 +626,7 @@ export class IrrigationUnlimitedCard extends LitElement {
               false,
               0,
               sequenceZone.adjustment,
-              suspended
+              suspended,
             )}
           </div>
         </div>
@@ -637,7 +637,7 @@ export class IrrigationUnlimitedCard extends LitElement {
   private _renderSequenceZoneRef(
     controller: IUController,
     zoneRef: string,
-    last: boolean
+    last: boolean,
   ): TemplateResult {
     const name = controller.lookup_zone_name(zoneRef);
     if (name)
@@ -658,7 +658,7 @@ export class IrrigationUnlimitedCard extends LitElement {
     allowCancel: boolean,
     pauseResume: number,
     adjustment: string | null | undefined,
-    suspended: Date | string | null | undefined
+    suspended: Date | string | null | undefined,
   ): TemplateResult {
     return html`
       <div class="iu-menu">
@@ -807,7 +807,7 @@ export class IrrigationUnlimitedCard extends LitElement {
 
   private _renderEnabled(
     isEnabled: boolean,
-    isBlocked: boolean
+    isBlocked: boolean,
   ): TemplateResult {
     return html`
       <ha-switch
@@ -901,7 +901,7 @@ export class IrrigationUnlimitedCard extends LitElement {
   }
 
   private _build_data(
-    e: Event
+    e: Event,
   ): { [key: string]: string | number | null } | undefined {
     const keys = this._get_iu_key(e);
     if (!keys) return;

@@ -294,7 +294,7 @@ export class IUCoordinator {
           {},
           { entity_id: "irrigation_unlimited.coordinator" },
           true,
-          true
+          true,
         )
       ).response;
       return response;
@@ -318,7 +318,7 @@ export class IUCoordinator {
           if (!hass.states[c.sequences[k].entity_id]) {
             console.error(
               "Sequence does not exist: ",
-              c.sequences[k].entity_id
+              c.sequences[k].entity_id,
             );
             c.sequences.pop();
           }
@@ -375,7 +375,7 @@ export class IUCoordinator {
           scope.parent.requestUpdate();
         };
       })(this),
-      1000
+      1000,
     );
   }
 
