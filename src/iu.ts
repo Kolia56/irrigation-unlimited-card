@@ -1,10 +1,10 @@
-import { HomeAssistant } from "./ha-types";
+import { HomeAssistant } from "./ha-types.js";
 import {
   hms_to_secs,
   secs_to_hms,
   elapsed_secs,
   percent_completed,
-} from "./util";
+} from "./util.js";
 
 interface EntityInfo {
   index: number;

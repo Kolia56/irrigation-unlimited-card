@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { LitElement, html, TemplateResult, PropertyValues, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import "./editor";
+import "./editor.js";
 import {
   IUCoordinator,
   IUController,
@@ -9,17 +9,17 @@ import {
   IUSequence,
   IUSequenceZone,
   IUTimeline,
-} from "./iu";
-import { styles } from "./styles";
-import { HomeAssistant } from "./ha-types";
+} from "./iu.js";
+import { styles } from "./styles.js";
+import { HomeAssistant } from "./ha-types.js";
 import type {
   IrrigationUnlimitedCardConfig,
   LovelaceCardEditor,
-} from "./types";
-import { CARD_VERSION } from "./const";
-import { date_to_str, humanise_adjustment } from "./util";
-import { localise } from "./localize";
-import { fireEvent, HASSDomEvent } from "./fire_event";
+} from "./types.js";
+import { CARD_VERSION } from "./const.js";
+import { date_to_str, humanise_adjustment } from "./util.js";
+import { localise } from "./localize.js";
+import { fireEvent, HASSDomEvent } from "./fire_event.js";
 
 declare global {
   interface HASSDomEvents {

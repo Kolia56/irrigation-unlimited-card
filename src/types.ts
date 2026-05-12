@@ -1,4 +1,4 @@
-import { HomeAssistant } from "./ha-types";
+import { HomeAssistant } from "./ha-types.js";
 
 export interface LovelaceCardConfig {
   index?: number;

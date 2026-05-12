@@ -7,10 +7,10 @@ import {
   nothing,
 } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import { HomeAssistant } from "./ha-types";
-import { fireEvent } from "./fire_event";
-import { IrrigationUnlimitedCardConfig } from "./types";
-import { localise } from "./localize";
+import { HomeAssistant } from "./ha-types.js";
+import { fireEvent } from "./fire_event.js";
+import { IrrigationUnlimitedCardConfig } from "./types.js";
+import { localise } from "./localize.js";
 
 const loc = new localise(window.navigator.language);
 
