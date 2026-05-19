@@ -62,7 +62,14 @@ export class IrrigationUnlimitedCard extends LitElement {
   }
 
   public static getStubConfig(): Record<string, unknown> {
-    return {};
+    return {
+      name: "Irrigation Unlimited",
+      show_controllers: "",
+      always_show_zones: false,
+      always_show_sequences: false,
+      show_timeline_scheduled: true,
+      show_timeline_history: true,
+    };
   }
 
   public getCardSize(): number {
