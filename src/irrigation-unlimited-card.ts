@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { LitElement, html, TemplateResult, PropertyValues, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
-import "./editor.js";
 import {
   IUCoordinator,
   IUController,
@@ -12,10 +11,7 @@ import {
 } from "./iu.js";
 import { styles } from "./styles.js";
 import { HomeAssistant } from "./ha-types.js";
-import type {
-  IrrigationUnlimitedCardConfig,
-  LovelaceCardEditor,
-} from "./types.js";
+import type { IrrigationUnlimitedCardConfig } from "./types.js";
 import { CARD_VERSION } from "./const.js";
 import { date_to_str, humanise_adjustment } from "./util.js";
 import { localise } from "./localize.js";
@@ -50,8 +46,35 @@ export class IrrigationUnlimitedCard extends LitElement {
 
   private iu_coordinator = new IUCoordinator(this);
 
-  public static async getConfigElement(): Promise<LovelaceCardEditor> {
-    return document.createElement("irrigation-unlimited-card-editor");
+  static getConfigForm() {
+    return {
+      schema: [
+        { name: "name", selector: { text: {} } },
+        { name: "show_controllers", selector: { text: {} } },
+        { name: "always_show_zones", selector: { boolean: {} } },
+        { name: "always_show_sequences", selector: { boolean: {} } },
+        { name: "show_timeline_scheduled", selector: { boolean: {} } },
+        { name: "show_timeline_history", selector: { boolean: {} } },
+      ],
+      computeLabel: (schema: { name: string; selector: {} }) => {
+        console.log(schema);
+        switch (schema.name) {
+          case "name":
+            return loc.t("editor.title.name");
+          case "show_controllers":
+            return loc.t("editor.showControllers.name");
+          case "always_show_zones":
+            return loc.t("editor.alwaysShowZones.name");
+          case "always_show_sequences":
+            return loc.t("editor.alwaysShowSequences.name");
+          case "show_timeline_scheduled":
+            return loc.t("editor.showTimelineScheduled.name");
+          case "show_timeline_history":
+            return loc.t("editor.showTimelineHistory.name");
+        }
+        return undefined;
+      },
+    };
   }
 
   public setConfig(config: IrrigationUnlimitedCardConfig): void {
