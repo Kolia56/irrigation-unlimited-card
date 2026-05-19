@@ -133,8 +133,13 @@ export class IrrigationUnlimitedCard extends LitElement {
           .split(",")
           .includes(controller.controller_id))
     );
-    const zonesHidden = !this.config.always_show_zones;
-    const sequencesHidden = !this.config.always_show_sequences;
+    const zonesHidden = !(
+      "always_show_zones" in this.config && this.config.always_show_zones
+    );
+    const sequencesHidden = !(
+      "always_show_sequences" in this.config &&
+      this.config.always_show_sequences
+    );
 
     let start: Date;
     let duration: string | undefined;
@@ -209,7 +214,7 @@ export class IrrigationUnlimitedCard extends LitElement {
             <label>${loc.t("controller.zones.name")}&nbsp;</label>
             <ha-switch
               .checked="${!zonesHidden}"
-              .disabled="${this.config.always_show_zones}"
+              .disabled="${!zonesHidden}"
               title=${loc.t("controller.zones.buttonHint")}
               @change="${this._toggleZones}"
             >
@@ -219,7 +224,7 @@ export class IrrigationUnlimitedCard extends LitElement {
             <label>${loc.t("controller.sequences.name")}&nbsp;</label>
             <ha-switch
               .checked="${!sequencesHidden}"
-              .disabled="${this.config.always_show_sequences}"
+              .disabled="${!sequencesHidden}"
               title=${loc.t("controller.sequences.buttonHint")}
               @change="${this._toggleSequences}"
             >
